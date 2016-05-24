@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "* Generating coins..."
+sleep 2
+
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101
+
+ADDRESS=`bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf getnewaddress myaccount`
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf sendtoaddress "$ADDRESS" 50
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101
+
+sleep 2
+echo "sent generated coins to $ADDRESS"
+
+s6-svc -d /var/run/s6/services/generate

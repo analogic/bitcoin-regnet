@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "* Bitcoind node 2..."
+exec /usr/bin/bitcoind \
+    --printtoconsole \
+    -datadir=/data/node-2 \
+    -conf=/etc/conf/node-2/bitcoin.conf \
+    -server
