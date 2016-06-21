@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkfifo /var/run/bitcoind/events-in
+exec 8<>/var/run/bitcoind/events-in
+exec ncat -l -k --send-only 0.0.0.0 18335 < /var/run/bitcoind/events-in
