@@ -9,11 +9,11 @@ RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:bitcoin/bitcoin && \
     apt-get update && \
-    apt-get install -y bitcoind
+    apt-get install -y bitcoind nmap
 
 RUN mkdir /var/run/bitcoind
 
-EXPOSE 18332
+EXPOSE 18332 18335
 
 VOLUME ["/data"]
 ADD rootfs /
