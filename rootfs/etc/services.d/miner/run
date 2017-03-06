@@ -3,4 +3,4 @@
 echo "* generating block..."
 
 bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 1
-sleep 60
+sleep 10

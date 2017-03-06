@@ -5,7 +5,7 @@ Docker container with 2 Bitcoin Core nodes connected to each other made specialy
 
 **Real network differences**
 - testnet addresses have "m" or "n" prefixes
-- block is mined every minute
+- block is mined every 10s
 
 **How to use container?**
 
