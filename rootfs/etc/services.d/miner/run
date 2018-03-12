@@ -3,5 +3,5 @@
 sleep 5
 echo "* generating block..."
 
-bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 1
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 100
 sleep 5
