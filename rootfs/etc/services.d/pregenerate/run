@@ -21,6 +21,6 @@ echo "* Generating another coins..."
 bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101  > /dev/null
 echo "* Done!"
 
-sleep 2
-
 s6-svc -d /var/run/s6/services/pregenerate
+
+sleep 9999
