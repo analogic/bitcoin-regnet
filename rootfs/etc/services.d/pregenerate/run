@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "* Generating coins..."
+sleep 2
+
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101 > /dev/null
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101 > /dev/null
+
+ADDRESS=`bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf getnewaddress shop`
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf sendtoaddress "$ADDRESS" 50
+
+echo "sent generated coins to $ADDRESS"
+
+ADDRESS=`bitcoin-cli -conf=/etc/conf/node-2/bitcoin.conf getnewaddress customer`
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf sendtoaddress "$ADDRESS" 50
+
+echo "sent generated coins to $ADDRESS"
+
+
+echo "* Generating another coins..."
+bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf generate 101  > /dev/null
+echo "* Done!"
+
+sleep 2
+
+s6-svc -d /var/run/s6/services/pregenerate
