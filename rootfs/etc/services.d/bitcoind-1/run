@@ -6,5 +6,5 @@ exec /usr/bin/bitcoind \
     -datadir=/data/node-1 \
     -conf=/etc/conf/node-1/bitcoin.conf \
     -server \
-    -walletnotify='/usr/bin/bitcoin-cli -conf=/etc/conf/node-1/bitcoin.conf gettransaction %s | tr "\n" " " | timeout --signal=SIGTERM 1 sed "s/$/\n/"  > /var/run/bitcoind/events-in' \
-    -blocknotify='timeout --signal=SIGTERM 1 echo %s > /var/run/bitcoind/events-in'
+    -walletnotify='/bin/push-transaction.sh /etc/conf/node-1/bitcoin.conf %s /var/run/bitcoind/events-in' \
+    -blocknotify='/bin/push-block.sh %s /var/run/bitcoind/events-in'

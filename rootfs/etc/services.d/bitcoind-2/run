@@ -5,4 +5,6 @@ exec /usr/bin/bitcoind \
     --printtoconsole \
     -datadir=/data/node-2 \
     -conf=/etc/conf/node-2/bitcoin.conf \
-    -server
+    -server \
+    -walletnotify='/bin/push-transaction.sh /etc/conf/node-2/bitcoin.conf %s /var/run/bitcoind/events2-in' \
+    -blocknotify='/bin/push-block.sh %s /var/run/bitcoind/events2-in'
